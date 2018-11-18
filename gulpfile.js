@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     const gulp = require('gulp');
@@ -40,6 +40,7 @@
             DIR_SCRIPTS: './build/scripts',
             DIR_IMAGES: './build/img',
             DIR_STYLES: './build/styles',
+            DIR_VENDOR: './build/vendor/**/*.*',
             manager: {
                 JS: 'app.js',
                 STYLES: 'index.css',
@@ -61,7 +62,7 @@
         }
     };
 
-    gulp.task('default', function () {
+    gulp.task('default', function() {
         if (NODE_ENV === 'production') {
             CONFIG.isDebug = false;
             CONFIG.serverUrl = '';
@@ -89,11 +90,11 @@
      */
     gulp.task('watch', [
         'managerWatch',
-    ], function () {
+    ], function() {
         browserSync.init(CONFIG.browserSync);
     });
 
-  
+
 
 
     /**
@@ -102,10 +103,11 @@
     gulp.task('managerBuild', [
         'managerHTML',
         'managerJS',
-        'managerStyles'
+        'managerStyles',
+        'commonVendor'
     ]);
 
-    gulp.task('managerHTML', function () {
+    gulp.task('managerHTML', function() {
         return gulp.src(PATH.src.manager.HTML)
             .pipe(gulpReplace('@@gulpServerUrl', CONFIG.serverUrl))
             .pipe(gulpReplace('@@gulpVersion', CONFIG.version))
@@ -114,10 +116,10 @@
             .pipe(browserSync.stream());
     });
 
-    gulp.task('managerJS', function () {
+    gulp.task('managerJS', function() {
         const bundler = createBrowserify(PATH.src.manager.JS, PATH.build.manager.COMPONENT_STYLES);
         return bundler
-            .transform(envify({NODE_ENV}), {global: true})
+            .transform(envify({ NODE_ENV }), { global: true })
             .bundle()
             .on('error', mapError)
             .pipe(vinylSourceStream(PATH.build.manager.JS))
@@ -125,19 +127,29 @@
             .pipe(gulp.dest(PATH.build.DIR_SCRIPTS));
     });
 
-    gulp.task('managerStyles', function () {
+    gulp.task('managerStyles', function() {
         return gulp.src(PATH.src.manager.STYLES)
-            .pipe(gulpSass({includePaths: 'node_modules'}))
+            .pipe(gulpSass({ includePaths: 'node_modules' }))
             .on('error', mapError)
             .pipe(gulpConcat(PATH.build.manager.STYLES))
             .pipe(gulp.dest(PATH.build.DIR_STYLES))
             .pipe(browserSync.stream());
     });
+    gulp.task('commonVendor', function() {
+        // Убедимся в наличии папок
+        // fsExtra.ensureDir('./src/vendor/');
+        // fsExtra.ensureDir('./build/vendor/');
+
+        // keen-ui
+        fsExtra.ensureDir('./build/vendor/keen-ui/');
+        fsExtra.copy('./node_modules/keen-ui/dist/keen-ui.min.css', './build/vendor/keen-ui/keen-ui.css', {});
+    });
 
     gulp.task('managerWatch', [
         'managerHTML',
-        'managerStyles'
-    ], function () {
+        'managerStyles',
+        'commonVendor',
+    ], function() {
         gulp.watch(PATH.src.manager.HTML, ['managerHTML']);
         gulp.watch(PATH.src.STYLES_GLOB, ['managerStyles']);
 
@@ -154,7 +166,7 @@
                 .pipe(browserSync.stream());
         }
 
-        watcher.on('update', function () {
+        watcher.on('update', function() {
             rebundle();
             console.log('[' + new Date() + '] Updated');
         });
@@ -162,8 +174,8 @@
         return rebundle();
     });
 
-    
-   
+
+
     /**
      * Создание browserify бандлера с необходимыми параметрами
      * @param appEntry
@@ -193,7 +205,7 @@
         }
 
         let bundler = browserify(params)
-            .plugin('vueify/plugins/extract-css', {out: cssBundle});
+            .plugin('vueify/plugins/extract-css', { out: cssBundle });
 
         if (false && CONFIG.isDebug) {
             bundler = bundler

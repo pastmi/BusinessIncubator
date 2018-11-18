@@ -9,12 +9,22 @@ import KeenUI from 'keen-ui';
 import {
     store
 } from './store';
-
 import App from './vue/App.vue';
 import PageMain from './vue/PageMain.vue';
+import Header from './vue/components/Header.vue';
+import Menu from './vue/components/Menu.vue';
+import MapControl from './vue/components/MapControl.vue';
+import MyProjects from './vue/modals/MyProjects.vue';
+import NewProjects from './vue/modals/MyProjects.vue';
+import News from './vue/modals/News.vue';
 
 
-// Vue.component('inf-table', Table);
+Vue.component('Header', Header);
+Vue.component('Menu', Menu);
+Vue.component('map-control', MapControl);
+Vue.component('modal-my-projects', MyProjects);
+Vue.component('modal-new-projects', NewProjects);
+Vue.component('modal-news', News);
 
 
 Vue.use(VueRouter);

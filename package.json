@@ -14,15 +14,15 @@
         "vue": "vue/dist/vue.common.js"
     },
     "dependencies": {
-        "bluebird": "^3.5.2",
+        "bluebird": "^3.5.3",
         "flatpickr": "2.4.8",
-        "keen-ui": "1.0.0",
+        "keen-ui": "^1.0.1",
         "lodash": "4.17.4",
         "material-design-icons": "3.0.1",
         "moment": "2.17.1",
         "vue": "2.4.4",
         "vue-chartjs": "^2.6.4",
-        "vue-color": "^2.2.3",
+        "vue-color": "^2.7.0",
         "vue-keyboard": "^3.0.2",
         "vue-router": "2.2.1",
         "vue-simple-loading": "^1.1.5",
