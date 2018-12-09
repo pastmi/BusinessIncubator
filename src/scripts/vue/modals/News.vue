@@ -1,5 +1,8 @@
 <template>
     <ui-modal id="modals-news" ref="modal" dismissOn="esc close-button">
+        <template slot="header">
+            News
+        </template>
         qwe3
     </ui-modal>
 </template>

@@ -1,5 +1,8 @@
 <template>
     <ui-modal id="modals-new-project" ref="modal" dismissOn="esc close-button">
+        <template slot="header">
+            New projects
+        </template>
         qwe2
     </ui-modal>
 </template>

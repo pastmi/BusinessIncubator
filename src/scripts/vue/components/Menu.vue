@@ -1,17 +1,19 @@
 <template>
     <div id="menu">
-        <button @click="openModal('my-projects')">
-            qwe
-        </button>
-        <button @click="openModal('new-projects')">
-            qwe
-        </button>
-        <button @click="openModal('news')">
-            qwe
-        </button>
-        <button>
-            qwe
-        </button>
+        <div class="menu-buttons">
+            <button  @click="openModal('my-projects')">
+                My projects
+            </button>
+            <button @click="openModal('new-projects')">
+                New projects
+            </button>
+            <button @click="openModal('news')">
+                News
+            </button>
+            <button >
+                Next
+            </button>
+        </div>
         <map-control/>
         <modal-my-projects ref="modal-my-projects"/>
         <modal-new-projects ref="modal-new-projects"/>
@@ -44,14 +46,36 @@
 
 <style lang="scss" scoped>
     #menu {
-        padding-top: 40px;
+        padding: 20px 10px;
+        padding-top: 48px;
         display: flex;
         flex-direction: column;
         position: absolute;
-        width: 100px;
+        width: 200px;
         top:0;
         left: 0;
         bottom: 0;
-        background: grey;
+        background: rgba(100, 67, 67, 0.5);
+        .menu-buttons {
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 48px;
+                width: 100%;
+                margin-bottom: 18px;
+                font-size: 20px;
+                color: white;
+                border: none;
+                background: #00b358;
+                cursor: pointer;
+            }
+            button:first-child {
+                background: #fb3f00;
+            }
+            button:last-child  {
+                background: #ffa940;
+            }
+        }
     }
 </style>

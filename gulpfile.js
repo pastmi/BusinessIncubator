@@ -83,6 +83,7 @@
      */
     gulp.task('production', [
         'managerBuild',
+
     ]);
 
     /**
@@ -104,7 +105,8 @@
         'managerHTML',
         'managerJS',
         'managerStyles',
-        'commonVendor'
+        'commonVendor',
+        'commonImages'
     ]);
 
     gulp.task('managerHTML', function() {
@@ -114,6 +116,11 @@
             .pipe(gulpReplace('@@gulpBuild', BUILD_NUMBER))
             .pipe(gulp.dest(PATH.build.DIR_ROOT))
             .pipe(browserSync.stream());
+    });
+    gulp.task('commonImages', function() {
+        return gulp.src(PATH.src.IMAGES_GLOB)
+            .pipe(gulp.dest(PATH.build.DIR_IMAGES));
+
     });
 
     gulp.task('managerJS', function() {
@@ -149,6 +156,7 @@
         'managerHTML',
         'managerStyles',
         'commonVendor',
+        'commonImages'
     ], function() {
         gulp.watch(PATH.src.manager.HTML, ['managerHTML']);
         gulp.watch(PATH.src.STYLES_GLOB, ['managerStyles']);

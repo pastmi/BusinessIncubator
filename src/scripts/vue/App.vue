@@ -25,5 +25,20 @@ export default {
         align-items: center;
         justify-content: center;
     }
+    //modals
+    .ui-modal__container {
+        background: none!important;
+    }
+    .ui-modal__header {
+        background: rgba(0, 67, 167, 0.7)!important;
+        color:white!important;
+        height: 30px!important;
+    }
+    .ui-icon svg  {
+        color: white;
+    }
+    .ui-modal__body {
+        background: #42abae70;
+    }   
 </style>
 
