@@ -28,17 +28,25 @@ export default {
     //modals
     .ui-modal__container {
         background: none!important;
+        width: 450px !important;
     }
     .ui-modal__header {
-        background: rgba(0, 67, 167, 0.7)!important;
+        background: url('../img/windowHeader.png') center no-repeat!important;
         color:white!important;
-        height: 30px!important;
+        height: 25px!important;
+        justify-content: center!important;
+        font-size: 20px;
+    }
+    .ui-modal__close-button {
+        position: absolute;
+        right: 0;
     }
     .ui-icon svg  {
         color: white;
     }
     .ui-modal__body {
-        background: #42abae70;
+        background: url('../img/window_ramp.png') center no-repeat;
+        height: 245px!important;
     }   
 </style>
 
