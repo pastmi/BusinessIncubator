@@ -3,7 +3,10 @@
         <template slot="header">
             News
         </template>
-        qwe3
+        <div class="body">
+            <img src="../img/tornadohdpi.png"/>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus maxime blanditiis dolore.</p>
+        </div>
     </ui-modal>
 </template>
 
@@ -29,5 +32,13 @@
     };
 </script>
 <style lang="scss" scoped>
-
+    .body {
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        height: 100%;
+        img {
+            margin-right: 25px;
+        }
+    }
 </style>

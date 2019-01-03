@@ -15,7 +15,7 @@ import Header from './vue/components/Header.vue';
 import Menu from './vue/components/Menu.vue';
 import MapControl from './vue/components/MapControl.vue';
 import MyProjects from './vue/modals/MyProjects.vue';
-import NewProjects from './vue/modals/MyProjects.vue';
+import NewProjects from './vue/modals/NewProjects.vue';
 import News from './vue/modals/News.vue';
 
 
