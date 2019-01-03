@@ -67,14 +67,14 @@
                 font-size: 20px;
                 color: white;
                 border: none;
-                background: #00b358;
+                background-color: rgb(0, 179, 88);
                 cursor: pointer;
             }
             button:first-child {
-                background: #fb3f00;
+                background-color: rgb(255, 61, 0); 
             }
             button:last-child  {
-                background: #ffa940;
+                background-color: rgb(255, 169, 64);
             }
         }
     }
