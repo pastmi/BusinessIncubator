@@ -4,31 +4,31 @@
         <div class="block-buttons-controle">
             <div class="buttons-line">
                 <button class="big">
-                    +
+                    <img src="../img/nav_top_i.png"/>
                 </button>
             </div>
 
             <div class="buttons-line">
                 <button class="big">
-                    +
+                    <img src="../img/nav_left_i.png"/>
                 </button>
                 <button class="little">
-                    +
+                    <img src="../img/nav_center_i.png"/>
                 </button>
                 <button class="big">
-                    +
+                    <img src="../img/nav_right_i.png"/>
                 </button>
             </div>
 
             <div class="buttons-line-footer">
                 <button class="little">
-                    +
+                    <img src="../img/nav_minus_i.png"/>
                 </button>
                 <button class="big">
-                    +
+                    <img src="../img/nav_down_i.png"/>
                 </button>
                 <button class="little">
-                    +
+                    <img src="../img/nav_plus_i.png"/>
                 </button>
             </div>
         </div>
@@ -64,6 +64,7 @@
                 border: none;
                 border-radius: 100%;
                 cursor:pointer;
+                box-shadow:  3px 3px 10px #00000060;
             }
             .big {
                 width: 46px;
