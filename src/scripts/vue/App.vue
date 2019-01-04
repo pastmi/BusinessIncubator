@@ -47,6 +47,12 @@ export default {
     .ui-modal__body {
         background: url('../img/window_ramp.png') center no-repeat;
         height: 245px!important;
-    }   
+    }  
+    .ui-close-button{
+        background: none!important;
+        &:hover{
+            
+        }
+    } 
 </style>
 

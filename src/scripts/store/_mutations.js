@@ -1,3 +1,3 @@
 export default {
-    GET_CARDS: 'GET_CARDS',
+    SET_MENU: 'SET_MENU',
 }

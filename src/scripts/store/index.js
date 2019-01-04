@@ -4,14 +4,14 @@ import Vuex from 'vuex';
 import MutationTypes from './_mutations';
 import ActionTypes from './_actions';
 
-import cards from './cards'
+import menu from './menu'
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
     strict: true,
-    modules : {
-        cards
+    modules: {
+        menu
     }
 })
 

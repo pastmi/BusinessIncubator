@@ -12,14 +12,15 @@
                 <p><img src="../img/project_feddback.png"/>300</p>
             </div>
         </div>
-        <button>Additional loan</button>
+        <button @click="openModal">Additional loan</button>
+
     </ui-modal>
 </template>
 
 <script>
     export default {
         name: 'modal-my-projects',
-
+        props:['openNewProject'],
         data() {
             return {
 
@@ -33,6 +34,11 @@
 
             cancel() {
                 this.$refs['modal'].close();
+            },
+            openModal(){
+                this.$emit('openNewProject');
+                this.cancel();
+                
             }
         }
     };
@@ -73,8 +79,11 @@
         border: none;
         cursor: pointer;
         box-shadow:  3px 3px 10px #00000060;
-        background-color: rgb(255, 61, 0); 
+        background-color: rgb(0, 179, 88);
         margin-left: auto;
-        margin-top: 17px
+        margin-top: 27px;
+        &:hover {
+            background-color: rgb(255, 61, 0);
+        }
     }
 </style>

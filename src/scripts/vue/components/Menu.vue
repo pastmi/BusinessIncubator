@@ -1,13 +1,13 @@
 <template>
     <div id="menu">
         <div class="menu-buttons">
-            <button  @click="openModal('my-projects')">
+            <button :class="{'active':getMenu === 0 }"  @click="setMenu(0)">
                 My projects
             </button>
-            <button @click="openModal('new-projects')">
+            <button :class="{'active':getMenu === 1 }" @click="setMenu(1)">
                 New projects
             </button>
-            <button @click="openModal('news')">
+            <button :class="{'active':getMenu === 2 }" @click="setMenu(2)">
                 News
             </button>
             <button >
@@ -15,30 +15,20 @@
             </button>
         </div>
         <map-control/>
-        <modal-my-projects ref="modal-my-projects"/>
-        <modal-new-projects ref="modal-new-projects"/>
-        <modal-news ref="modal-news"/>
     </div>
 </template>
 <script>
+    import {actions} from '../../store';
     export default {
         name:"menu",
+        computed:{
+            getMenu(){
+                return this.$store.getters.getMenu;
+            }
+        },
         methods:{
-            openModal(type){
-                switch (type) {
-                    case 'my-projects':
-                        this.$refs['modal-my-projects'].open();
-                        break;
-                    case 'new-projects':
-                        this.$refs['modal-new-projects'].open();
-                        break;
-                    case 'news':
-                        this.$refs['modal-news'].open();
-                        break;
-                
-                    default:
-                        break;
-                }
+            setMenu(type){
+                this.$store.dispatch(actions.setMenu,type);
             }
         }
     }
@@ -71,12 +61,12 @@
                 cursor: pointer;
                 box-shadow:  3px 3px 10px #00000060;
             }
-            button:first-child {
-                background-color: rgb(255, 61, 0); 
-            }
             button:last-child  {
                 margin-top: 36px;
                 background-color: rgb(255, 169, 64);
+            }
+            .active {
+                background-color: rgb(255, 61, 0);
             }
         }
     }

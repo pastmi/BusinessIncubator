@@ -16,6 +16,7 @@ import Menu from './vue/components/Menu.vue';
 import MapControl from './vue/components/MapControl.vue';
 import MyProjects from './vue/modals/MyProjects.vue';
 import NewProjects from './vue/modals/NewProjects.vue';
+import NewProjectsSecond from './vue/modals/NewProjectsSecond.vue';
 import News from './vue/modals/News.vue';
 
 
@@ -24,6 +25,7 @@ Vue.component('Menu', Menu);
 Vue.component('map-control', MapControl);
 Vue.component('modal-my-projects', MyProjects);
 Vue.component('modal-new-projects', NewProjects);
+Vue.component('modal-new-projects-second', NewProjectsSecond);
 Vue.component('modal-news', News);
 
 
