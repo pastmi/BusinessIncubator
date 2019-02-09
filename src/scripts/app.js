@@ -18,10 +18,12 @@ import MyProjects from './vue/modals/MyProjects.vue';
 import NewProjects from './vue/modals/NewProjects.vue';
 import NewProjectsSecond from './vue/modals/NewProjectsSecond.vue';
 import News from './vue/modals/News.vue';
+import MapBlock from './vue/components/Map.vue';
 
 
 Vue.component('Header', Header);
 Vue.component('Menu', Menu);
+Vue.component('Map', MapBlock);
 Vue.component('map-control', MapControl);
 Vue.component('modal-my-projects', MyProjects);
 Vue.component('modal-new-projects', NewProjects);
