@@ -30,9 +30,11 @@ import { actions } from "../store";
 import { fabric } from "fabric";
 export default {
   name: "page-main",
-  date() {
+  data() {
     return {
-      map: null
+      map: null,
+      zoomMax: 1,
+      zoomMin: 0.4
     };
   },
   computed: {
@@ -61,36 +63,58 @@ export default {
     );
   },
   methods: {
-    zoomIn() {
-       this.map.zoomToPoint(new fabric.Point(this.map.width / 2, this.map.height / 2),this.map.getZoom() * 1.1);
+    zoomIn(){
+      const newZoom = this.map.getZoom() * 1.1;
+      if(newZoom >= this.zoomMax){
+        return;
+      }
+       this.map.zoomToPoint(new fabric.Point(this.map.width / 2, this.map.height / 2), newZoom);
     },
 
     zoomOut() {
-      this.map.zoomToPoint(new fabric.Point(this.map.width / 2, this.map.height / 2),this.map.getZoom() / 1.1);
+      const newZoom = this.map.getZoom() / 1.1;   
+      if(newZoom <= this.zoomMin){
+        return;
+      }
+      this.map.zoomToPoint(new fabric.Point(this.map.width / 2, this.map.height / 2), newZoom);
     },
 
     goRight() {
-      var units = 10;
-      var delta = new fabric.Point(units, 0);
+      let units = 10;
+      let delta = new fabric.Point(units, 0);
+      if(this.map.vptCoords.bl.x<10) {
+        return;
+      }
       this.map.relativePan(delta);
     },
     goCenter(){
     this.map.zoomToPoint(new fabric.Point(this.map.width / 2, this.map.height / 2), 0.4);
     },
     goLeft() {
-      var units = 10;
-      var delta = new fabric.Point(-units, 0);
+      let units = 10;
+      let delta = new fabric.Point(-units, 0);
+      console.log(this.map.vptCoords)
+      if(this.map.vptCoords.bl.x > 1450) {
+        return;
+      }
       this.map.relativePan(delta);
     },
     goUp() {
-      var units = 10;
-      var delta = new fabric.Point(0, -units);
+      let units = 10;
+      let delta = new fabric.Point(0, -units);
+
+      if(this.map.vptCoords.bl.y > 1860) {
+        return;
+      }
       this.map.relativePan(delta);
     },
 
     goDown() {
-      var units = 10;
-      var delta = new fabric.Point(0, units);
+      let units = 10;
+      let delta = new fabric.Point(0, units);
+      if(this.map.vptCoords.bl.y < 1617) {
+        return;
+      }
       this.map.relativePan(delta);
     },
     openNews() {
