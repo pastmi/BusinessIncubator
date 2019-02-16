@@ -68,6 +68,7 @@ export default {
       if(newZoom >= this.zoomMax){
         return;
       }
+
        this.map.zoomToPoint(new fabric.Point(this.map.width / 2, this.map.height / 2), newZoom);
     },
 
@@ -76,25 +77,27 @@ export default {
       if(newZoom <= this.zoomMin){
         return;
       }
+
       this.map.zoomToPoint(new fabric.Point(this.map.width / 2, this.map.height / 2), newZoom);
     },
 
     goRight() {
       let units = 10;
       let delta = new fabric.Point(units, 0);
-      if(this.map.vptCoords.bl.x<10) {
+      if(this.map.vptCoords.tl.x<10) {
         return;
       }
       this.map.relativePan(delta);
     },
+
     goCenter(){
     this.map.zoomToPoint(new fabric.Point(this.map.width / 2, this.map.height / 2), 0.4);
     },
+
     goLeft() {
       let units = 10;
       let delta = new fabric.Point(-units, 0);
-      console.log(this.map.vptCoords)
-      if(this.map.vptCoords.bl.x > 1450) {
+      if(this.map.vptCoords.tl.x > 1425+((this.map.getZoom()-0.4)*2130)) {
         return;
       }
       this.map.relativePan(delta);
@@ -102,8 +105,7 @@ export default {
     goUp() {
       let units = 10;
       let delta = new fabric.Point(0, -units);
-
-      if(this.map.vptCoords.bl.y > 1860) {
+      if(this.map.vptCoords.tl.y > 320+((this.map.getZoom()-0.4)*1800)) {
         return;
       }
       this.map.relativePan(delta);
@@ -112,7 +114,7 @@ export default {
     goDown() {
       let units = 10;
       let delta = new fabric.Point(0, units);
-      if(this.map.vptCoords.bl.y < 1617) {
+      if(this.map.vptCoords.tl.y < 10) {
         return;
       }
       this.map.relativePan(delta);
